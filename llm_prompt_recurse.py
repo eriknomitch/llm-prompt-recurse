@@ -36,13 +36,11 @@ def main():
 
         client = Client()
 
-        print("🚀 Running the client...")
-        print(client)
-
         task = (
-            "Generate a tweet to market an academic paper or open source project. It should be"
-                " well crafted but avoid gimicks or over-reliance on buzzwords."
+            """Generate a LinkedIn post to summarize AI news. It should be well crafted but avoid gimicks or over-reliance on buzzwords."""
         )
+
+        print(f"Task: {task}")
 
         prompt = hub.pull("wfh/metaprompt")
         llm = ChatAnthropic(model="claude-3-opus-20240229")
