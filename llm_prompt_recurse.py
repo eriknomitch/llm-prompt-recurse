@@ -7,6 +7,8 @@ from langchain import hub
 from langchain_anthropic import ChatAnthropic
 from langchain_core.output_parsers import StrOutputParser
 
+from ipdb import set_trace as debug
+
 ANTHROPIC_API_KEY = None
 
 # Load the API key from the .env file
@@ -30,37 +32,38 @@ def main():
     load_env()
     print("Hello, world!")
 
+    try:
 
-    client = Client()
+        client = Client()
 
-    print("🚀 Running the client...")
-    print(client)
+        print("🚀 Running the client...")
+        print(client)
 
-    task = (
-        "Generate a tweet to market an academic paper or open source project. It should be"
-            " well crafted but avoid gimicks or over-reliance on buzzwords."
-    )
+        task = (
+            "Generate a tweet to market an academic paper or open source project. It should be"
+                " well crafted but avoid gimicks or over-reliance on buzzwords."
+        )
 
-    prompt = hub.pull("wfh/metaprompt")
-    llm = ChatAnthropic(model="claude-3-opus-20240229")
+        prompt = hub.pull("wfh/metaprompt")
+        llm = ChatAnthropic(model="claude-3-opus-20240229")
 
-    print("🚀 Running the pipeline...")
-    print("Prompt", prompt)
-    print(f"Model: {llm}")
-    print(f"Task: {task}")
+        print("🚀 Running the pipeline...")
 
+        meta_prompter = prompt | llm | StrOutputParser() | get_instructions
 
-    meta_prompter = prompt | llm | StrOutputParser() | get_instructions
-
-    recommended_prompt = meta_prompter.invoke(
-        {
-            "task": task,
-            "input_variables": """
-{paper}
-""",
-        }
-    )
-    print(recommended_prompt)
+        recommended_prompt = meta_prompter.invoke(
+            {
+                "task": task,
+                "input_variables": """
+    {paper}
+    """,
+            }
+        )
+        print(recommended_prompt)
+    except Exception as e:
+        debug()
+        print(f"Error: {e}")
+        raise e
 
 if __name__ == "__main__":
     try:
