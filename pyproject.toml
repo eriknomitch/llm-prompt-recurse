@@ -8,6 +8,11 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
+langchain-anthropic = "^0.1.4"
+langchain = {extras = ["all"], version = "^0.1.13"}
+click = "^8.1.7"
+python-dotenv = "^1.0.1"
+ipython = "^8.22.2"
 
 
 [build-system]
