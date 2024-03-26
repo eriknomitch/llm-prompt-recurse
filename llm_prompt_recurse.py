@@ -34,14 +34,13 @@ def get_instructions(gen: str):
 
 def main():
     load_env()
-    print("Hello, world!")
 
     try:
 
         client = Client()
 
         task = (
-            """Generate a LinkedIn post to summarize AI news. It should be well crafted but avoid gimicks or over-reliance on buzzwords."""
+            """Generate a LinkedIn post based on a Tweet (or series of tweets). It should include a 1.) a short, clear overview explaining the tweet(s) and 2.) a concrete example of how this could be leveraged by companies. It should be well crafted but avoid gimicks or over-reliance on buzzwords. Importantly, the post should be professional and informative in a matter-of-fact style. Avoid hype."""
         )
 
         print(f"Task: {task}")
@@ -58,7 +57,7 @@ def main():
                 {
                     "task": task,
                     "input_variables": """
-        {paper}
+        {ai_news}
         """,
                 }
             )
