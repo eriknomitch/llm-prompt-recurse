@@ -54,14 +54,15 @@ def main():
         with yaspin(text="Generating prompt..."):
             meta_prompter = prompt | llm | StrOutputParser() | get_instructions
 
-        recommended_prompt = meta_prompter.invoke(
-            {
-                "task": task,
-                "input_variables": """
-    {paper}
-    """,
-            }
-        )
+            recommended_prompt = meta_prompter.invoke(
+                {
+                    "task": task,
+                    "input_variables": """
+        {paper}
+        """,
+                }
+            )
+
         print(recommended_prompt)
     except Exception as e:
         debug()
