@@ -1,5 +1,7 @@
 import os
 import sys
+import time
+
 from dotenv import load_dotenv
 from langsmith import Client
 
@@ -8,6 +10,8 @@ from langchain_anthropic import ChatAnthropic
 from langchain_core.output_parsers import StrOutputParser
 
 from ipdb import set_trace as debug
+
+from yaspin import yaspin
 
 ANTHROPIC_API_KEY = None
 
@@ -47,7 +51,8 @@ def main():
 
         print("🚀 Running the pipeline...")
 
-        meta_prompter = prompt | llm | StrOutputParser() | get_instructions
+        with yaspin(text="Generating prompt..."):
+            meta_prompter = prompt | llm | StrOutputParser() | get_instructions
 
         recommended_prompt = meta_prompter.invoke(
             {
