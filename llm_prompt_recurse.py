@@ -21,7 +21,7 @@ load_dotenv()
 # --------------------------------------------------
 # TASK/VARIABLES -----------------------------------
 # --------------------------------------------------
-task = """Generate a LinkedIn post based on a Tweet (or series of tweets). It should include a 1.) a short, clear overview explaining the tweet(s) and 2.) a concrete example of how this could be leveraged by companies. It should be well crafted but avoid gimicks or over-reliance on buzzwords. Importantly, the post should be professional and informative in a matter-of-fact style. Avoid hype."""
+task = """Generate a LinkedIn post based on formatted text from Tweet(s). It should be well crafted but avoid gimicks or over-reliance on buzzwords."""
 
 input_variables = ["tweet"]
 
