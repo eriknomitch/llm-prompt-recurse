@@ -25,22 +25,27 @@ task = """Generate a LinkedIn post based on a Tweet (or series of tweets). It sh
 
 input_variables = ["tweet"]
 
+prompt_name = "eriknomitch/metaprompt"
+prompt_version = "e6cc56a0"
+prompt_name_version = prompt_name + f":{prompt_version}" if prompt_version else ''
+
 # --------------------------------------------------
 # --------------------------------------------------
 # --------------------------------------------------
 def get_instructions(gen: str):
     return gen.split("<Instructions>")[1].split("</Instructions>")[0]
 
-def generate_meta_prompt(task: str, input_variables: list, client=Client(), prompt_name="wfh/metaprompt"):
+def generate_meta_prompt(task: str, input_variables: list, client=Client()):
     print("🟢 Generating meta prompt...")
 
-    prompt = hub.pull(prompt_name)
-    llm = ChatAnthropic(model="claude-3-opus-20240229")
-   
-    print(f" Task:\n{task}")
+    print(f"Prompt name/version:\n{prompt_name_version}")
+    print(f"Task:\n{task}")
     print(f"Input variables:\n{input_variables}")
     print(f"Prompt name:\n{prompt_name}")
-
+    
+    llm = ChatAnthropic(model="claude-3-opus-20240229")
+    prompt = hub.pull(prompt_name_version)
+   
     # Wrap each string in brackets and join by newline
     wrapped_input_variables = "\n".join([f"[{s}]" for s in input_variables])
         
