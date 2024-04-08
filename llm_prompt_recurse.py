@@ -2,6 +2,7 @@ import os
 import sys
 import time
 
+import click
 from dotenv import load_dotenv
 from langsmith import Client
 
@@ -66,9 +67,13 @@ def generate_meta_prompt(task: str, input_variables: list, client=Client()):
 def main():
 
     try:
-        recommended_prompt = generate_meta_prompt(task, input_variables)
-        print(f"Recommended prompt:\n\n{recommended_prompt}")
-        print()
+        if click.confirm('Do you want to generate the meta prompt?'):
+            recommended_prompt = generate_meta_prompt(task, input_variables)
+            print(f"Recommended prompt:\n\n{recommended_prompt}")
+            print()
+        else:
+            print("Meta prompt generation cancelled by user.")
+            sys.exit(0)
     except Exception as e:
         debug()
         print(f"Error: {e}")
