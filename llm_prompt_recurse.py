@@ -1,6 +1,7 @@
 import os
 import sys
 import time
+import json
 
 import click
 from rich.console import Console
@@ -35,6 +36,10 @@ prompt_name_version = prompt_name + f":{prompt_version}" if prompt_version else 
 # --------------------------------------------------
 # --------------------------------------------------
 # --------------------------------------------------
+def load_json_from_prompts(filename):
+    with open(os.path.join('prompts', filename), 'r') as file:
+        return json.load(file)
+
 def get_instructions(gen: str):
     return gen.split("<Instructions>")[1].split("</Instructions>")[0]
 
