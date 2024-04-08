@@ -25,14 +25,6 @@ load_dotenv()
 # --------------------------------------------------
 # TASK/VARIABLES -----------------------------------
 # --------------------------------------------------
-task = """Generate a LinkedIn post based on formatted text from Tweet(s). It should be well crafted but avoid gimicks or over-reliance on buzzwords."""
-
-input_variables = ["tweet"]
-
-prompt_name = "eriknomitch/metaprompt"
-prompt_version = "e6cc56a0"
-prompt_name_version = prompt_name + f":{prompt_version}" if prompt_version else ''
-
 # --------------------------------------------------
 # --------------------------------------------------
 # --------------------------------------------------
@@ -79,6 +71,16 @@ def generate_meta_prompt(task: str, input_variables: list, client=Client()):
     return recommended_prompt
 
 def main():
+    @click.command()
+    @click.argument('prompt_filename')
+    def main(prompt_filename):
+        prompt_data = load_json_from_prompts(prompt_filename)
+        task = prompt_data['task']
+        input_variables = prompt_data['input_variables']
+        prompt_name = prompt_data['prompt']['name']
+        prompt_version = prompt_data['prompt']['version']
+        prompt_name_version = prompt_name + f":{prompt_version}" if prompt_version else ''
+
 
     try:
         print_overview(task, input_variables, prompt_name_version)
@@ -97,7 +99,7 @@ def main():
 if __name__ == "__main__":
     try:
         print("🟢 Starting...")
-        main()
+        main()  # This will now invoke the click command
     except Exception as e:
         print(f"Error: {e}")
         sys.exit(1)
