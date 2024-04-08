@@ -36,13 +36,17 @@ prompt_name_version = prompt_name + f":{prompt_version}" if prompt_version else 
 def get_instructions(gen: str):
     return gen.split("<Instructions>")[1].split("</Instructions>")[0]
 
-def generate_meta_prompt(task: str, input_variables: list, client=Client()):
-    print("🟢 Generating meta prompt...")
-
+def print_overview(task, input_variables, prompt_name_version):
     print(f"Prompt name/version:\n{prompt_name_version}")
     print(f"Task:\n{task}")
     print(f"Input variables:\n{input_variables}")
     print(f"Prompt name:\n{prompt_name}")
+
+def generate_meta_prompt(task: str, input_variables: list, client=Client()):
+    print("🟢 Generating meta prompt...")
+
+    print_overview(task, input_variables, prompt_name_version)
+
     
     llm = ChatAnthropic(model="claude-3-opus-20240229")
     prompt = hub.pull(prompt_name_version)
@@ -67,6 +71,7 @@ def generate_meta_prompt(task: str, input_variables: list, client=Client()):
 def main():
 
     try:
+        print_overview(task, input_variables, prompt_name_version)
         if click.confirm('Do you want to generate the meta prompt?'):
             recommended_prompt = generate_meta_prompt(task, input_variables)
             print(f"Recommended prompt:\n\n{recommended_prompt}")
