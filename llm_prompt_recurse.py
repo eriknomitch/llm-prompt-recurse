@@ -37,10 +37,12 @@ def get_instructions(gen: str):
     return gen.split("<Instructions>")[1].split("</Instructions>")[0]
 
 def print_overview(task, input_variables, prompt_name_version):
-    print(f"Prompt name/version:\n{prompt_name_version}")
-    print(f"Task:\n{task}")
-    print(f"Input variables:\n{input_variables}")
-    print(f"Prompt name:\n{prompt_name}")
+    print("Overview of Prompt Generation:")
+    print(f"- Prompt name/version: {prompt_name_version}")
+    print(f"- Task: {task}")
+    print(f"- Input variables: {', '.join(input_variables)}")
+    print(f"- Prompt name: {prompt_name}")
+    print()
 
 def generate_meta_prompt(task: str, input_variables: list, client=Client()):
     print("🟢 Generating meta prompt...")
