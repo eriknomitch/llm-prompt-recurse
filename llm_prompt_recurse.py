@@ -3,6 +3,8 @@ import sys
 import time
 
 import click
+from rich.console import Console
+from rich.markup import escape
 from dotenv import load_dotenv
 from langsmith import Client
 
@@ -37,12 +39,13 @@ def get_instructions(gen: str):
     return gen.split("<Instructions>")[1].split("</Instructions>")[0]
 
 def print_overview(task, input_variables, prompt_name_version):
-    print("Overview of Prompt Generation:")
-    print(f"- Prompt name/version: {prompt_name_version}")
-    print(f"- Task: {task}")
-    print(f"- Input variables: {', '.join(input_variables)}")
-    print(f"- Prompt name: {prompt_name}")
-    print()
+    console = Console()
+    console.print("[bold]Overview of Prompt Generation:[/bold]", style="green")
+    console.print(f"• [bold]Prompt name/version:[/bold] {escape(prompt_name_version)}", style="yellow")
+    console.print(f"• [bold]Task:[/bold] {escape(task)}", style="yellow")
+    console.print(f"• [bold]Input variables:[/bold] {', '.join(map(escape, input_variables))}", style="yellow")
+    console.print(f"• [bold]Prompt name:[/bold] {escape(prompt_name)}", style="yellow")
+    console.print()  # For an extra newline for better separation
 
 def generate_meta_prompt(task: str, input_variables: list, client=Client()):
     print("🟢 Generating meta prompt...")
