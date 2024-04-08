@@ -35,7 +35,7 @@ def load_json_from_prompts(filename):
 def get_instructions(gen: str):
     return gen.split("<Instructions>")[1].split("</Instructions>")[0]
 
-def print_overview(task, input_variables, prompt_name_version):
+def print_overview(task, input_variables, prompt_name, prompt_name_version):
     console = Console()
     console.print("[bold]Overview of Prompt Generation:[/bold]", style="green")
     console.print(f"• [bold]Prompt name/version:[/bold] {escape(prompt_name_version)}", style="yellow")
@@ -82,7 +82,7 @@ def main(prompt_filename):
     prompt_name_version = f"{prompt_name}:{prompt_version}" if prompt_version else prompt_name
 
     try:
-        print_overview(task, input_variables, prompt_name_version)
+        print_overview(task, input_variables, prompt_name, prompt_name_version)
         if click.confirm('Do you want to generate the meta prompt?'):
             recommended_prompt = generate_meta_prompt(task, input_variables, prompt_name_version)
             print(f"Recommended prompt:\n\n{recommended_prompt}")
@@ -99,14 +99,11 @@ if __name__ == "__main__":
     try:
         print("🟢 Starting...")
         main()
-    except Exception as e:
-        print(f"Error: {e}")
-        sys.exit(1)
-        else:
+    # Except a click exception to handle user cancellation
+    except click.exceptions.Abort:
         print("Meta prompt generation cancelled by user.")
         sys.exit(0)
     except Exception as e:
         debug()
         print(f"Error: {e}")
         raise e
-
