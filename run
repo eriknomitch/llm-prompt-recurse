@@ -1,6 +1,5 @@
 #!/usr/bin/env zsh
 
-
 # If no arguments are passed, use the current model
 if [ $# -eq 0 ]; then
   _current="linkedin_from_tweet"
