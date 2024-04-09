@@ -55,6 +55,7 @@ def generate_meta_prompt(task: str, input_variables: list, prompt_name_version: 
 
     # Wrap each string in brackets and join by newline
     wrapped_input_variables = "\n".join([f"[{s}]" for s in input_variables])
+    wrapped_output_variables = "\n".join([f"[{s}]" for s in output_variables])
 
     print("🟢 Running the pipeline...")
 
@@ -65,6 +66,7 @@ def generate_meta_prompt(task: str, input_variables: list, prompt_name_version: 
             {
                 "task": (task),
                 "input_variables": wrapped_input_variables,
+                "output_variables": wrapped_output_variables,
             }
         )
 
@@ -79,6 +81,7 @@ def main(prompt_filename):
     prompt_data = load_json_from_prompts(prompt_filename)
     task = prompt_data.get('task')
     input_variables = prompt_data.get('input_variables')
+    output_variables = prompt_data.get('output_variables', [])
     prompt_name = prompt_data.get('prompt', {}).get('name')
     prompt_version = prompt_data.get('prompt', {}).get('version')
     prompt_name_version = f"{prompt_name}:{prompt_version}" if prompt_version else prompt_name
@@ -86,7 +89,7 @@ def main(prompt_filename):
     try:
         print_overview(task, input_variables, prompt_name, prompt_name_version)
         if click.confirm('Do you want to generate the meta prompt?'):
-            recommended_prompt = generate_meta_prompt(task, input_variables, prompt_name_version)
+            recommended_prompt = generate_meta_prompt(task, input_variables, output_variables, prompt_name_version)
             print(f"Recommended prompt:\n\n{recommended_prompt}")
             print()
         else:
