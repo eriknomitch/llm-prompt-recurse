@@ -1,3 +1,12 @@
 #!/usr/bin/env zsh
 
-poetry run python llm_prompt_recurse.py $*
+
+# If no arguments are passed, use the current model
+if [ $# -eq 0 ]; then
+  _current="linkedin_from_tweet"
+else
+  _current=$1
+  shift
+fi
+
+poetry run python llm_prompt_recurse.py $_current "$@"
