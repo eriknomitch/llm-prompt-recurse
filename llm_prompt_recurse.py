@@ -37,7 +37,7 @@ def load_json_from_prompts(filename):
 def get_instructions(gen: str):
     return gen.split("<Instructions>")[1].split("</Instructions>")[0]
 
-def print_overview(task, input_variables, prompt_name, prompt_name_version):
+def print_overview(task, input_variables, output_variables, prompt_name, prompt_name_version):
     console = Console()
     console.print("[bold]Overview of Prompt Generation:[/bold]", style="green")
     console.print(f"• [bold]Prompt name/version:[/bold] {escape(prompt_name_version)}", style="yellow")
@@ -46,7 +46,7 @@ def print_overview(task, input_variables, prompt_name, prompt_name_version):
     console.print(f"• [bold]Prompt name:[/bold] {escape(prompt_name)}", style="yellow")
     console.print()  # For an extra newline for better separation
 
-def generate_meta_prompt(task: str, input_variables: list, prompt_name_version: str, client=Client()):
+def generate_meta_prompt(task: str, input_variables: list, output_variables: list, prompt_name: str, prompt_name_version: str, client=Client()):
     print("🟢 Generating meta prompt...")
 
     # The print_overview call is removed from here because it's already called in main_cli
@@ -82,15 +82,15 @@ def main(prompt_filename):
     prompt_data = load_json_from_prompts(prompt_filename)
     task = prompt_data.get('task')
     input_variables = prompt_data.get('input_variables')
-    output_variables = prompt_data.get('output_variables', [])
+    output_variables = prompt_data.get('output_variables')
     prompt_name = prompt_data.get('prompt', {}).get('name')
     prompt_version = prompt_data.get('prompt', {}).get('version')
     prompt_name_version = f"{prompt_name}:{prompt_version}" if prompt_version else prompt_name
 
     try:
-        print_overview(task, input_variables, prompt_name, prompt_name_version)
+        print_overview(task, input_variables, output_variables, prompt_name, prompt_name_version)
         if click.confirm('Do you want to generate the meta prompt?'):
-            recommended_prompt = generate_meta_prompt(task, input_variables, output_variables, prompt_name_version)
+            recommended_prompt = generate_meta_prompt(task, input_variables, output_variables, prompt_name, prompt_name_version)
             print(f"Recommended prompt:\n\n{recommended_prompt}")
             print()
         else:

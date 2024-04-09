@@ -4,6 +4,6 @@
   "output_variables": ["job_fit_report"],
   "prompt": {
     "name": "eriknomitch/metaprompt",
-    "version": "e6cc56a0"
+    "version": "f8de889c"
   }
 }
