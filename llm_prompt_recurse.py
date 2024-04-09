@@ -71,7 +71,7 @@ def generate_meta_prompt(task: str, input_variables: list, output_variables: lis
             }
         )
 
-    return recommended_prompt
+    return recommended_prompt.trim()
 
 
 @click.command()
