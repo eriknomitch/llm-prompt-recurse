@@ -17,6 +17,8 @@ from ipdb import set_trace as debug
 
 from yaspin import yaspin
 
+ANTHROPIC_MODEL = "claude-3-opus-20240229"
+
 # --------------------------------------------------
 # --------------------------------------------------
 # --------------------------------------------------
@@ -49,8 +51,7 @@ def generate_meta_prompt(task: str, input_variables: list, prompt_name_version: 
 
     # The print_overview call is removed from here because it's already called in main_cli
 
-
-    llm = ChatAnthropic(model="claude-3-opus-20240229")
+    llm = ChatAnthropic(model=ANTHROPIC_MODEL)
     prompt = hub.pull(prompt_name_version)
 
     # Wrap each string in brackets and join by newline
