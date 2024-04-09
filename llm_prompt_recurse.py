@@ -77,28 +77,33 @@ def generate_meta_prompt(task: str, input_variables: list, output_variables: lis
 @click.command()
 @click.argument('prompt_filename')
 def main(prompt_filename):
-    if not prompt_filename.endswith('.json'):
-        prompt_filename += '.json'
-    prompt_data = load_json_from_prompts(prompt_filename)
-    task = prompt_data.get('task')
-    input_variables = prompt_data.get('input_variables')
-    output_variables = prompt_data.get('output_variables')
-    prompt_name = prompt_data.get('prompt', {}).get('name')
-    prompt_version = prompt_data.get('prompt', {}).get('version')
-    prompt_name_version = f"{prompt_name}:{prompt_version}" if prompt_version else prompt_name
 
     try:
+        if not prompt_filename.endswith('.json'):
+            prompt_filename += '.json'
+
+        prompt_filename_base = prompt_filename.removesuffix('.json')
+
+        prompt_data = load_json_from_prompts(prompt_filename)
+        task = prompt_data.get('task')
+        input_variables = prompt_data.get('input_variables')
+        output_variables = prompt_data.get('output_variables')
+        prompt_name = prompt_data.get('prompt', {}).get('name')
+        prompt_version = prompt_data.get('prompt', {}).get('version')
+        prompt_name_version = f"{prompt_name}:{prompt_version}" if prompt_version else prompt_name
+
         print_overview(task, input_variables, output_variables, prompt_name, prompt_name_version)
+
         if click.confirm('Do you want to generate the meta prompt?'):
             recommended_prompt = generate_meta_prompt(task, input_variables, output_variables, prompt_name, prompt_name_version)
             print(f"Recommended prompt:\n\n{recommended_prompt}")
             print()
 
-            # Save the recommended prompt to prompts/<prompt_name>.recommended.txt
-            with open(os.path.join('prompts', f"{prompt_name}.recommended.txt"), 'w') as file:
+            # Save the recommended prompt to './prompts/<prompt_name>.recommended.txt'
+            with open(os.path.join('prompts', f"{prompt_filename_base}.recommended.txt"), 'w') as file:
                 file.write(recommended_prompt)
 
-            print(f"Recommended prompt saved to prompts/{prompt_name}.recommended.txt")
+            print(f"Recommended prompt saved to './prompts/{prompt_filename_base}.recommended.txt'")
         else:
             print("Meta prompt generation cancelled by user.")
             sys.exit(0)
@@ -115,7 +120,3 @@ if __name__ == "__main__":
     except click.exceptions.Abort:
         print("Meta prompt generation cancelled by user.")
         sys.exit(0)
-    except Exception as e:
-        debug()
-        print(f"Error: {e}")
-        raise e
