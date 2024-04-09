@@ -93,6 +93,12 @@ def main(prompt_filename):
             recommended_prompt = generate_meta_prompt(task, input_variables, output_variables, prompt_name, prompt_name_version)
             print(f"Recommended prompt:\n\n{recommended_prompt}")
             print()
+
+            # Save the recommended prompt to prompts/<prompt_name>.recommended.txt
+            with open(os.path.join('prompts', f"{prompt_name}.recommended.txt"), 'w') as file:
+                file.write(recommended_prompt)
+
+            print(f"Recommended prompt saved to prompts/{prompt_name}.recommended.txt")
         else:
             print("Meta prompt generation cancelled by user.")
             sys.exit(0)
