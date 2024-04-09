@@ -74,6 +74,8 @@ def generate_meta_prompt(task: str, input_variables: list, prompt_name_version: 
 @click.command()
 @click.argument('prompt_filename')
 def main(prompt_filename):
+    if not prompt_filename.endswith('.json'):
+        prompt_filename += '.json'
     prompt_data = load_json_from_prompts(prompt_filename)
     task = prompt_data.get('task')
     input_variables = prompt_data.get('input_variables')
