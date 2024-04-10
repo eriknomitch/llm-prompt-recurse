@@ -1,0 +1,9 @@
+{
+  "task": "Given a sample resume in Markdown format and a comprehensive Markdown file containing a candidate's resume, CV, and other relevant information, create a new Markdown resume based on the template with the candidate's information in it. The new resume should adhere to the main style and length of the template.",
+  "input_variables": ["sample_resume", "candidate_information"],
+  "output_variables": ["new_resume"],
+  "prompt": {
+    "name": "eriknomitch/metaprompt",
+    "version": "f8de889c"
+  }
+}
