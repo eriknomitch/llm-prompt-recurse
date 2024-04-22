@@ -1,0 +1,35 @@
+Here is the job posting:
+<job_posting>
+[job_post]
+</job_posting>
+
+Here is the comprehensive description of the candidate, including their CV, resume, skills, requirements, and desired/undesired job aspects:  
+<candidate_description>
+[candidate_description]
+</candidate_description>
+
+Your task is to analyze the job fit by comparing the job posting against the candidate description. Assess the following:
+
+1) How well does the candidate's qualifications (education, skills, experience) align with the job requirements and responsibilities? Identify key strengths and potential gaps.
+
+2) How well does the job align with the candidate's ideal job criteria, in terms of both their stated requirements and their listed desired and undesired job aspects? Highlight areas of strong alignment and possible mismatches.
+
+3) Provide an overall assessment of the candidate's fit for this role, considering both their ability to perform the job based on their qualifications, and the fit between the job and the candidate's preferences. 
+
+Consider all the above areas of analysis when writing your report on the job fit between this candidate and this job posting.
+
+Structure your report using the following format, including the XML tags:
+
+<job_fit_report>
+  <qualifications_alignment> 
+    Assess how well the candidate's qualifications match the job requirements here. Highlight a few key strengths and gaps, with specific examples from the job post and candidate description.
+  </qualifications_alignment>
+
+  <job_preferences_alignment>
+    Evaluate the fit between the job and the candidate's stated job preferences and requirements. Identify areas where the job strongly aligns with their ideal criteria, and any potential mismatches, referencing specifics from the job post and candidate profile.  
+  </job_preferences_alignment>
+
+  <overall_fit_assessment>
+    Provide your overall assessment of the candidate's fit for this job here, weighing both their ability to perform the job duties given their qualifications, and the alignment between the job and their preferences. Offer a balanced perspective, noting both positives and potential drawbacks.
+  </overall_fit_assessment>
+</job_fit_report>

@@ -1,0 +1,27 @@
+Your task is to generate a new resume in Markdown format based on a provided resume template and a candidate's comprehensive background information. The goal is for the generated resume to incorporate the most relevant information from the candidate's background while adhering closely to the style, format and approximate length of the template resume.
+
+First, carefully review this sample resume in Markdown format to understand its structure, style and the type of content it includes:
+<sample_resume>
+[sample_resume]
+</sample_resume>
+
+Next, review the comprehensive file containing the candidate's resume, CV, and other relevant background information: 
+<candidate_information>
+[candidate_information]
+</candidate_information>
+
+Based on the template, determine what information from the candidate's background would be most appropriate to include in each section of the generated resume. Consider the order and emphasis of information in the template to guide what you pull from the candidate's information. The generated resume should be similar in length to the template.
+
+Now generate the new resume in Markdown format:
+- Mirror the overall structure, section ordering, and formatting of the template resume as closely as possible
+- For each section, incorporate the most relevant information from the candidate's background  
+- Aim to include a similar amount of content for each section as is in the template
+- Use wording and phrasing similar to the template where appropriate
+- Ensure the writing style and tone are consistent throughout and aligned with the template
+
+Once complete, review the generated resume in full:
+- Check that it includes the candidate's key information and selling points given the resume's purpose
+- Ensure the style and format are consistent with the template
+- Look for any awkward phrasing or areas that could be polished
+
+Provide the generated resume in Markdown format inside <new_resume> tags.

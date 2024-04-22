@@ -160,4 +160,4 @@ cython_debug/
 #.idea/
 .aider*
 
-prompts/*.recommended.txt
+# prompts/*.recommended.txt
