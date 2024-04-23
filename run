@@ -2,7 +2,7 @@
 
 # If no arguments are passed, use the current model
 if [ $# -eq 0 ]; then
-  _current="markdown-resume-builder"
+  _current="email_contractor"
 else
   _current=$1
   shift

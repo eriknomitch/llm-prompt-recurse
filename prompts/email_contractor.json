@@ -1,0 +1,13 @@
+{
+  "task": "Given the name of the contractor, the project details, and any specific reasons or justifications for requesting a discount, create an email that professionally asks the contractor for discounted pricing. The email should be polite and clear, outlining the reasons for the request.",
+  "input_variables": [
+    "contractor_name",
+    "project_details",
+    "discount_justification"
+  ],
+  "output_variables": ["email_content"],
+  "prompt": {
+    "name": "eriknomitch/metaprompt",
+    "version": "f8de889c"
+  }
+}
