@@ -1,0 +1,23 @@
+Your task is to draft an email to a contractor to request discounted pricing on a project. I will provide you with the following key pieces of information to include in the email:
+
+The contractor's name: <contractor_name>{$contractor_name}</contractor_name>
+
+A description of the project: <project_details>{$project_details}</project_details>  
+
+The justification or reasons for requesting a discount: <discount_justification>{$discount_justification}</discount_justification>
+
+Using the provided information, draft a polite and professional email with the following structure:
+
+1. Begin with a greeting addressed to the contractor by name. 
+
+2. In the first paragraph, briefly outline the project you are reaching out about and express your interest in working with them specifically.
+
+3. In the next paragraph, go into more details on the scope and requirements of the project based on the project description provided. 
+
+4. After outlining the project, transition to the request for discounted pricing. Sensitively explain the reasons for the request, referring to the justifications provided in the input. Emphasize that you value the contractor's work and expertise.
+
+5. Close the email by thanking the contractor for their consideration of the request and express your eagerness to hear back from them. Provide your contact information and invite them to reach out with any questions.
+
+Please format your email in a clear, readable manner with appropriate paragraph breaks. Maintain a warm but professional tone throughout. Do not make any commitments or promises beyond the discount request.
+
+Provide your output inside <email_content> tags.
