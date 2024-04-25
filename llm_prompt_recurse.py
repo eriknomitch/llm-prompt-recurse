@@ -94,7 +94,14 @@ def main(prompt_filename):
         if not prompt_files:
             click.echo("No prompt files found in the 'prompts' directory.")
             sys.exit(1)
-        prompt_filename = click.prompt("Please choose a prompt file", type=click.Choice(prompt_files, case_sensitive=False))
+
+        click.echo("Please choose a prompt file:")
+        for i, file in enumerate(prompt_files, start=1):
+            click.echo(f"{i}. {file}")
+
+        prompt_filename = click.prompt("Enter the number of your chosen file", type=int)
+        prompt_filename = prompt_files[prompt_filename - 1]
+
 
     try:
         if not prompt_filename.endswith('.json'):
