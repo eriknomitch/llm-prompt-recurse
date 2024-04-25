@@ -33,6 +33,11 @@ load_dotenv()
 # --------------------------------------------------
 # --------------------------------------------------
 # --------------------------------------------------
+def list_prompt_files():
+    prompt_dir = 'prompts'
+    files = [f for f in os.listdir(prompt_dir) if os.path.isfile(os.path.join(prompt_dir, f)) and f.endswith('.json')]
+    return files
+
 def load_json_from_prompts(filename):
     with open(os.path.join('prompts', filename), 'r') as file:
         return json.load(file)
@@ -49,6 +54,24 @@ def print_overview(task, input_variables, output_variables, prompt_name, prompt_
     console.print(f"• [bold]Prompt name:[/bold] {escape(prompt_name)}", style="yellow")
     console.print()  # For an extra newline for better separation
 
+# --------------------------------------------------
+# --------------------------------------------------
+# --------------------------------------------------
+
+@click.command()
+@click.argument('prompt_filename', required=False)
+def main(prompt_filename):
+
+    try:
+        if not prompt_filename:
+            prompt_files = list_prompt_files()
+            if not prompt_files:
+                click.echo("No prompt files found in the 'prompts' directory.")
+                sys.exit(1)
+            prompt_filename = click.prompt("Please choose a prompt file", type=click.Choice(prompt_files, case_sensitive=False))
+
+        if not prompt_filename.endswith('.json'):
+            prompt_filename += '.json'
 def generate_meta_prompt(task: str, input_variables: list, output_variables: list, prompt_name: str, prompt_name_version: str, client=Client()):
     print("🟢 Generating meta prompt...")
 
