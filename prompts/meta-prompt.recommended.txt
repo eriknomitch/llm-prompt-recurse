@@ -1,0 +1,19 @@
+Here is a description of a task that needs to be turned into a JSON meta-prompt:
+
+[description]
+
+Please carefully analyze the description above and create a well-structured JSON meta-prompt that defines the task, including:
+
+- task_type: A short name for the type of task, like "question_answering", "open_ended_generation", "classification", "sentiment_analysis", etc.
+- input_variables: A list of input variables the task requires, with the variable name and a short description of what it should contain
+- output_variables: A list of output variables the task produces, with the variable name and a short description of what it will contain
+- description: A clear, concise description of what the task is and what should be done to complete it. Break it down into step-by-step instructions if needed.
+
+Here are a few tips:
+- Make sure the task_type succinctly captures the essence of the task 
+- The input and output variable names should be short and generic, not too task-specific
+- The input and output descriptions should clearly explain what the variable is, but be concise
+- The overall description should provide a high-level explanation of the task and list out the key steps required to implement it
+- Use proper JSON formatting, with quoted keys and values
+
+Please output your meta-prompt inside <meta_prompt_json> tags.

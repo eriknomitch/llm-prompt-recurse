@@ -57,21 +57,6 @@ def print_overview(task, input_variables, output_variables, prompt_name, prompt_
 # --------------------------------------------------
 # --------------------------------------------------
 # --------------------------------------------------
-
-@click.command()
-@click.argument('prompt_filename', required=False)
-def main(prompt_filename):
-
-    try:
-        if not prompt_filename:
-            prompt_files = list_prompt_files()
-            if not prompt_files:
-                click.echo("No prompt files found in the 'prompts' directory.")
-                sys.exit(1)
-            prompt_filename = click.prompt("Please choose a prompt file", type=click.Choice(prompt_files, case_sensitive=False))
-
-        if not prompt_filename.endswith('.json'):
-            prompt_filename += '.json'
 def generate_meta_prompt(task: str, input_variables: list, output_variables: list, prompt_name: str, prompt_name_version: str, client=Client()):
     print("🟢 Generating meta prompt...")
 
@@ -101,8 +86,15 @@ def generate_meta_prompt(task: str, input_variables: list, output_variables: lis
 
 
 @click.command()
-@click.argument('prompt_filename')
+@click.argument('prompt_filename', required=False)
 def main(prompt_filename):
+
+    if not prompt_filename:
+        prompt_files = list_prompt_files()
+        if not prompt_files:
+            click.echo("No prompt files found in the 'prompts' directory.")
+            sys.exit(1)
+        prompt_filename = click.prompt("Please choose a prompt file", type=click.Choice(prompt_files, case_sensitive=False))
 
     try:
         if not prompt_filename.endswith('.json'):
