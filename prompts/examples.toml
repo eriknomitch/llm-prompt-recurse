@@ -1,0 +1,52 @@
+examples = [
+  {
+    task = "Given a job post and a comprehensive markdown file containing a CV, resume, description of skills, list of requirements, and a list of desired and undesired aspects of the ideal job, create a report on the job fit. The report should assess the alignment between the job requirements and the candidate's qualifications and preferences, highlighting areas of strength, potential gaps, and the match between the candidate's ideal job criteria and the job post."
+    input_variables = ["job_post", "candidate_description"]
+    output_variables = ["job_fit_report"]
+  },
+  {
+    task = "Given the name of the contractor, the project details, and any specific reasons or justifications for requesting a discount, create an email that professionally asks the contractor for discounted pricing. The email should be polite and clear, outlining the reasons for the request."
+    input_variables = ["contractor_name", "project_details", "discount_justification"]
+    output_variables = ["email_content"]
+  },
+  {
+    task = "Given a job post and a comprehensive markdown file containing a CV, resume, description of skills, list of requirements, and a list of desired and undesired aspects of the ideal job, create a report on the job fit. The report should assess the alignment between the job requirements and the candidate's qualifications and preferences, highlighting areas of strength, potential gaps, and the match between the candidate's ideal job criteria and the job post."
+    input_variables = ["job_post", "candidate_description"]
+    output_variables = ["job_fit_report"]
+  },
+  {
+    task = "Generate a LinkedIn post based on formatted text from Tweet(s). It should be well crafted but avoid gimicks or over-reliance on buzzwords."
+    input_variables = ["tweet"]
+  },
+  {
+    task = "Given a sample resume in Markdown format and a comprehensive Markdown file containing a candidate's resume, CV, and other relevant information, create a new Markdown resume based on the template with the candidate's information in it. The new resume should adhere to the main style and length of the template."
+    input_variables = ["sample_resume", "candidate_information"]
+    output_variables = ["new_resume"]
+  },
+  {
+    task = "Create a concise and appealing product title based on a list of keywords and a product description."
+    input_variables = ["keywords", "product_description", "target_audience"]
+    output_variables = ["product_title"]
+  },
+  {
+    task = "Craft a sincere and apologetic email to a customer for a delayed shipment, including a clear explanation and a solution to prevent future delays."
+    input_variables = ["customer_name", "shipment_details", "delay_reason", "resolution"]
+    output_variables = ["apology_email"]
+  },
+  {
+    task = "Develop a set of behavioral interview questions that assess a candidate's alignment with the company's mission, values, and culture."
+    input_variables = ["company_mission", "company_values", "job_description"]
+    output_variables = ["interview_questions"]
+  },
+  {
+    task = "Generate a captivating social media post announcing a new product launch, including a brief description, key features, and a call-to-action."
+    input_variables = ["product_name", "product_features", "launch_date", "target_audience"]
+    output_variables = ["social_media_post"]
+  },
+  {
+    task = "Create a personalized email recommending products to a customer based on their purchase history, preferences, and browsing behavior."
+    input_variables = ["customer_id", "purchase_history", "browsing_history", "product_catalog"]
+    output_variables = ["recommendation_email"]
+  }
+]
+
