@@ -17,6 +17,9 @@ from ipdb import set_trace as debug
 
 from yaspin import yaspin
 
+DEFAULT_PROMPT_NAME = "eriknomitch/metaprompt"
+DEFAULT_PROMPT_VERSION = "f8de889c"
+
 ANTHROPIC_MODEL = "claude-3-opus-20240229"
 
 # --------------------------------------------------
@@ -88,8 +91,8 @@ def main(prompt_filename):
         task = prompt_data.get('task')
         input_variables = prompt_data.get('input_variables')
         output_variables = prompt_data.get('output_variables')
-        prompt_name = prompt_data.get('prompt', {}).get('name')
-        prompt_version = prompt_data.get('prompt', {}).get('version')
+        prompt_name = prompt_data.get('prompt', {}).get('name', DEFAULT_PROMPT_NAME)
+        prompt_version = prompt_data.get('prompt', {}).get('version', DEFAULT_PROMPT_VERSION)
         prompt_name_version = f"{prompt_name}:{prompt_version}" if prompt_version else prompt_name
 
         print_overview(task, input_variables, output_variables, prompt_name, prompt_name_version)
