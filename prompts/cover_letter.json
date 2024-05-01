@@ -1,0 +1,10 @@
+{
+  "task": "Given a job description, a candidate description, and an analysis of overlapping skills and experiences, create a tailored cover letter for the candidate to apply to the job. The cover letter should be concise, ideally between 250 and 400 words, and should highlight the candidate's relevant skills, experience, and qualifications that align with the job requirements. It should also express the candidate's enthusiasm for the role and company. Avoid using generic phrases or clichés commonly found in cover letters, and instead focus on specific examples and achievements that demonstrate the candidate's suitability for the role.",
+  "input_variables": [
+    "job_description",
+    "candidate_description",
+    "overlapping_skills_and_experiences"
+  ],
+  "output_variables": ["cover_letter"],
+  "writing_guidelines": "When crafting the cover letter, avoid using genericisms and clichés that are commonly associated with cover letters, such as 'To Whom It May Concern,' 'I am writing to express my interest,' or 'I am a perfect fit for this role.' Instead, focus on providing specific examples and achievements that showcase the candidate's relevant skills and experiences, demonstrating their suitability for the role and genuine interest in the company."
+}

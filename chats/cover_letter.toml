@@ -58,32 +58,19 @@ Structure your report using the following format, including the XML tags:
 [[messages]]
 type = "human"
 text = """
-Create 3 cover letters or summaries of qualifications for the candidate based on the overlapping skills and experiences you identified. Craft a compelling narrative that highlights the candidate's strengths and alignment with the job requirements.
+Your goal is to write a compelling, personalized cover letter from the candidate's perspective that highlights their most relevant skills, experience, and qualifications based on the job description. Pay particular attention to the overlapping_skills_and_experiences that have been identified.
 
-Structure your report using the following format, including the XML tags:
-<cover_letters>
-  <cover_letter>
-    Write the cover letter or summary of qualifications here. Tailor the content to emphasize the candidate's relevant skills and experiences that align with the job posting.
-  </cover_letter>
-</cover_letters>
-"""
-[[messages]]
-type = "human"
-text = """
-If you were hiring for this role, which cover letter would you find most compelling and why? Provide feedback on the strengths and weaknesses of each cover letter, focusing on the clarity of communication, relevance to the job posting, and overall persuasiveness.
+The cover letter should be concise, ideally between 250-400 words. It should demonstrate the candidate's fit and enthusiasm for the role.
 
-Structure your feedback using the following format, including the XML tags:
-<cover_letter_feedback>
-  <preferred_cover_letter>
-    Provide feedback on the cover letter you find most compelling. Highlight its strengths and areas for improvement, focusing on clarity, relevance, and persuasiveness.
-  </preferred_cover_letter>
+Some key points:
+- Open the letter by expressing enthusiasm for the job opportunity and company
+- Highlight 2-3 of the candidate's most relevant and impressive skills, experience, and accomplishments that directly relate to the job requirements. Be as specific as possible.
+- Mention the candidate's interest in the company's mission, products, culture or other relevant factors
+- Close the letter by reiterating interest in the role and desire to contribute
 
-  <improved_cover_letter>
-    Rewrite the <preferred_cover_letter> with any suggestions for improvement based on your feedback. Ensure the revised cover letter addresses the weaknesses you identified.
-  </improved_cover_letter>
+Do not use generic, cliched language. Every statement should be highly specific to this candidate and role.
 
-  <other_cover_letters>
-    Provide feedback on the other cover letters, noting their strengths and weaknesses compared to the preferred cover letter. Offer suggestions for improvement.
-  </other_cover_letters>
-</cover_letter_feedback>
+First, take a moment to review the job description, candidate background, and identified overlaps. Jot down your key thoughts and a rough outline for the cover letter in <scratchpad> tags before proceeding.
+
+When you are ready, write the full cover letter inside <cover_letter> tags.
 """
