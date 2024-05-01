@@ -1,4 +1,4 @@
-import json
+import toml
 from langchain_anthropic import ChatAnthropic
 from langchain_core.prompts import ChatPromptTemplate
 
@@ -6,9 +6,9 @@ from langchain_core.prompts import ChatPromptTemplate
 chat_model = ChatAnthropic(api_key="your_api_key_here", model="claude-3-sonnet-20240229", temperature=0.2)
 
 # Load JSON data from a file named 'data.json'
-def load_json_data(file_path):
+def load_toml_data(file_path):
     with open(file_path, 'r') as file:
-        return json.load(file)
+        return toml.load(file)
 
 # Function to process and display the loaded data using the chat model
 def process_data(data, chat_model):
@@ -29,10 +29,9 @@ def process_data(data, chat_model):
 
 # Main execution
 if __name__ == "__main__":
-    file_path = 'chats/cover_letter.json'
-    data = load_json_data(file_path)
+    file_path = 'chats/cover_letter.toml'
+    data = load_toml_data(file_path)
     process_data(data, chat_model)
-
 # import json
 #
 # from langchain_anthropic import ChatAnthropic
