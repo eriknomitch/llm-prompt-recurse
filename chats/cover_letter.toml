@@ -39,7 +39,7 @@ Structure your report using the following format, including the XML tags:
 
 [[messages]]
 type = "ai"
-text = False
+text = false
 
 [[messages]]
 type = "human"
@@ -63,7 +63,7 @@ Structure your report using the following format, including the XML tags:
 
 [[messages]]
 type = "ai"
-text = False
+text = false
 
 [[messages]]
 type = "human"
@@ -80,4 +80,4 @@ Structure your report using the following format, including the XML tags:
 
 [[messages]]
 type = "ai"
-text = False
+text = false

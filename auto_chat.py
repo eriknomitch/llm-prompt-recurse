@@ -12,20 +12,32 @@ def load_toml_data(file_path):
 
 # Function to process and display the loaded data using the chat model
 def process_data(data, chat_model):
-    system_message = data['system']
+    system_message = data['system']['description']
     messages = data['messages']
 
     # Define the chat prompt template dynamically based on the loaded messages
     prompts = [("system", system_message)]
+
+
     for message in messages:
         if message['type'] == 'human':
             prompts.append(("human", message['text']))
+        elif message['type'] == 'ai' and message['text'] is False:
+            break
 
-    chat_template = ChatPromptTemplate.from_messages(prompts)
+    print("Messages:", prompts)
 
-    # Start the chat by invoking the model
-    response = chat_model.invoke(chat_template.to_prompt())
-    print("Response from model:", response)
+    prompt_template = ChatPromptTemplate.from_messages(prompts)
+    chain = prompt_template | chat_model
+    chain.invoke(
+        {
+            "job_posting": "Software Engineer",
+            "candidate_description": "I am a software engineer with 5 years of experience in Python and Java. I have worked on various projects including web development, data analysis, and machine learning. I am passionate about technology and always eager to learn new things. I am looking for a challenging role where I can utilize my skills and contribute to the success of the company."
+        }
+    )
+
+    print(chain)
+
 
 # Main execution
 if __name__ == "__main__":
