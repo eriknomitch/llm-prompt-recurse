@@ -35,7 +35,7 @@ load_dotenv()
 # --------------------------------------------------
 def list_prompt_files():
     prompt_dir = 'prompts'
-    files = [f for f in os.listdir(prompt_dir) if os.path.isfile(os.path.join(prompt_dir, f)) and f.endswith('.json')]
+    files = [f for f in os.listdir(prompt_dir) if os.path.isfile(os.path.join(prompt_dir, f)) and f.endswith('.json') and f != 'examples.json']
     return files
 
 def load_json_from_prompts(filename):
