@@ -67,3 +67,23 @@ Structure your report using the following format, including the XML tags:
   </cover_letter>
 </cover_letters>
 """
+[[messages]]
+type = "human"
+text = """
+If you were hiring for this role, which cover letter would you find most compelling and why? Provide feedback on the strengths and weaknesses of each cover letter, focusing on the clarity of communication, relevance to the job posting, and overall persuasiveness.
+
+Structure your feedback using the following format, including the XML tags:
+<cover_letter_feedback>
+  <preferred_cover_letter>
+    Provide feedback on the cover letter you find most compelling. Highlight its strengths and areas for improvement, focusing on clarity, relevance, and persuasiveness.
+  </preferred_cover_letter>
+
+  <improved_cover_letter>
+    Rewrite the <preferred_cover_letter> with any suggestions for improvement based on your feedback. Ensure the revised cover letter addresses the weaknesses you identified.
+  </improved_cover_letter>
+
+  <other_cover_letters>
+    Provide feedback on the other cover letters, noting their strengths and weaknesses compared to the preferred cover letter. Offer suggestions for improvement.
+  </other_cover_letters>
+</cover_letter_feedback>
+"""
