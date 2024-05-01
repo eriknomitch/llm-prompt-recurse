@@ -1,9 +1,12 @@
 import toml
+from dotenv import load_dotenv
 from langchain_anthropic import ChatAnthropic
 from langchain_core.prompts import ChatPromptTemplate
 
+load_dotenv()
+
 # Initialize the Anthropic chat model
-chat_model = ChatAnthropic(api_key="your_api_key_here", model="claude-3-sonnet-20240229", temperature=0.2)
+chat_model = ChatAnthropic(api_key=os.getenv('ANTHROPIC_API_KEY'), model="claude-3-sonnet-20240229", temperature=0.2)
 
 # Load JSON data from a file named 'data.json'
 def load_toml_data(file_path):
