@@ -38,16 +38,15 @@ def invoke_chain(prompts):
 
 
 # Function to process and display the loaded data using the chat model
-def process_data(system_message, messages, chat_model, prompts=[]):
+def process_data(system_message, messages, chat_model, prompts=[], index=0):
 
-    if len(prompts) == 0:
+    print(f"Processing message {index + 1} of {len(messages)}")
+
+    if index == 0:
         prompts.append(("system", system_message))
 
-    for message in messages:
-        if message['type'] == 'human':
-            prompts.append(("human", message['text']))
-        elif message['type'] == 'ai' and message['text'] is False:
-            break
+    # Append the first human message to the prompts
+    prompts.append(("human", messages[index]['text']))
 
     response = invoke_chain(prompts)
 
@@ -56,8 +55,9 @@ def process_data(system_message, messages, chat_model, prompts=[]):
     print("-------------------------------")
 
     # If there are more messages to process, recursively call the function
-    if len(messages) < len(data['messages']):
-        return process_data(data, chat_model, prompts.append(("ai", response.content)))
+    if index + 1 < len(messages):
+        prompts.append(("ai", response.content))
+        return process_data(system_message, messages, chat_model, prompts=prompts, index=(index + 1))
 
     print("Chat completed!")
 

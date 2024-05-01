@@ -35,47 +35,35 @@ Structure your report using the following format, including the XML tags:
   </overall_fit_assessment>
 </job_fit_report>"""
 
-# [[messages]]
-# type = "ai"
-# text = false
-#
-# [[messages]]
-# type = "human"
-# text = """
-# Identify overlapping skills and experiences between the job posting and the candidate's profile. Highlight key qualifications that match the job requirements and responsibilities.
-#
-# This will be used to create a cover letter or summary of qualifications for the candidate to submit with their application.
-#
-# Structure your report using the following format, including the XML tags:
-#
-# <overlapping_skills>
-#   <skills>
-#     List the skills that are common between the job posting and the candidate's profile. Provide specific examples from both the job post and candidate description.
-#   </skills>
-#
-#   <experiences>
-#     Identify relevant experiences that align with the job requirements. Discuss how these experiences make the candidate a strong fit for the role.
-#   </experiences>
-# </overlapping_skills>
-# """
-#
-# [[messages]]
-# type = "ai"
-# text = false
-#
-# [[messages]]
-# type = "human"
-# text = """
-# Create 3 cover letters or summaries of qualifications for the candidate based on the overlapping skills and experiences you identified. Craft a compelling narrative that highlights the candidate's strengths and alignment with the job requirements.
-#
-# Structure your report using the following format, including the XML tags:
-# <cover_letters>
-#   <cover_letter>
-#     Write the cover letter or summary of qualifications here. Tailor the content to emphasize the candidate's relevant skills and experiences that align with the job posting.
-#   </cover_letter>
-# </cover_letters>
-# """
-#
-# [[messages]]
-# type = "ai"
-# text = false
+[[messages]]
+type = "human"
+text = """
+Identify overlapping skills and experiences between the job posting and the candidate's profile. Highlight key qualifications that match the job requirements and responsibilities.
+
+This will be used to create a cover letter or summary of qualifications for the candidate to submit with their application.
+
+Structure your report using the following format, including the XML tags:
+
+<overlapping_skills>
+  <skills>
+    List the skills that are common between the job posting and the candidate's profile. Provide specific examples from both the job post and candidate description.
+  </skills>
+
+  <experiences>
+    Identify relevant experiences that align with the job requirements. Discuss how these experiences make the candidate a strong fit for the role.
+  </experiences>
+</overlapping_skills>
+"""
+
+[[messages]]
+type = "human"
+text = """
+Create 3 cover letters or summaries of qualifications for the candidate based on the overlapping skills and experiences you identified. Craft a compelling narrative that highlights the candidate's strengths and alignment with the job requirements.
+
+Structure your report using the following format, including the XML tags:
+<cover_letters>
+  <cover_letter>
+    Write the cover letter or summary of qualifications here. Tailor the content to emphasize the candidate's relevant skills and experiences that align with the job posting.
+  </cover_letter>
+</cover_letters>
+"""
