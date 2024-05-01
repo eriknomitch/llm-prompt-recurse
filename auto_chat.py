@@ -15,14 +15,33 @@ def load_toml_data(file_path):
     with open(file_path, 'r') as file:
         return toml.load(file)
 
+def invoke_chain(prompts):
+    print("Prompts:", prompts)
+
+    prompt_template = ChatPromptTemplate.from_messages(prompts)
+
+    chain = prompt_template | chat_model
+
+    # Make a dict `inputs` from the file 'chats/cover_letter.inputs.toml'
+    inputs_path = 'chats/cover_letter.inputs.toml'
+    inputs = load_toml_data(inputs_path)
+
+    # Print only the keys and of the inputs
+    print("Inputs:", inputs.keys())
+    
+    chain = ChatPromptTemplate.from_messages(prompts) | chat_model
+
+    message = chain.invoke(inputs)
+    content = message.content
+
+    return message
+
+
 # Function to process and display the loaded data using the chat model
-def process_data(data, chat_model):
-    system_message = data['system']['description']
-    messages = data['messages']
+def process_data(system_message, messages, chat_model, prompts=[]):
 
-    # Define the chat prompt template dynamically based on the loaded messages
-    prompts = [("system", system_message)]
-
+    if len(prompts) == 0:
+        prompts.append(("system", system_message))
 
     for message in messages:
         if message['type'] == 'human':
@@ -30,29 +49,27 @@ def process_data(data, chat_model):
         elif message['type'] == 'ai' and message['text'] is False:
             break
 
-    print("Messages:", prompts)
+    response = invoke_chain(prompts)
 
-    prompt_template = ChatPromptTemplate.from_messages(prompts)
+    print("-------------------------------")
+    print("Response:", response.content)
+    print("-------------------------------")
 
-    chain = prompt_template | chat_model
+    # If there are more messages to process, recursively call the function
+    if len(messages) < len(data['messages']):
+        return process_data(data, chat_model, prompts.append(("ai", response.content)))
 
-    chain.invoke(
-        {
-            "job_posting": "Software Engineer",
-            "candidate_description": "I am a software engineer with 5 years of experience in Python and Java. I have worked on various projects including web development, data analysis, and machine learning. I am passionate about technology and always eager to learn new things. I am looking for a challenging role where I can utilize my skills and contribute to the success of the company."
-        }
-    )
-
-    print(chain)
+    print("Chat completed!")
 
     set_trace()
-
 
 # Main execution
 if __name__ == "__main__":
     file_path = 'chats/cover_letter.toml'
     data = load_toml_data(file_path)
-    process_data(data, chat_model)
+    system_message = data['system']['description']
+    messages = data['messages']
+    process_data(system_message, messages, chat_model)
 # import json
 #
 # from langchain_anthropic import ChatAnthropic
