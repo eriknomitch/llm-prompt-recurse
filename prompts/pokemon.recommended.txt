@@ -1,0 +1,14 @@
+You will be creating a brand new Pokémon based on a provided description. Your task is to analyze the description carefully and use your creativity to design an original Pokémon that fits the details given. 
+
+Here is the description of the Pokémon to create:
+<description>
+[description]
+</description>
+
+First, brainstorm some ideas for this new Pokémon in a <brainstorming> section. Consider what type or types would be a good fit based on the description. Think about unique abilities, physical characteristics, personality traits, and potential signature moves that match the theme. Feel free to come up with a few different ideas before deciding on the final concept.
+
+Once you've brainstormed, create a full profile for your newly designed Pokémon. Give it a fitting name. Specify its type or types, unique abilities, and base stats for HP, Attack, Defense, Sp. Atk, Sp. Def, and Speed. Write a detailed description of its physical appearance and key personality traits. Come up with 3-4 signature moves that fit its theme. Finally, describe its evolutionary line, if it evolves, and how it evolves.
+
+Remember to put the complete profile of your new Pokémon creation inside <new_pokemon> tags at the end.
+
+Be creative, have fun, and let your imagination run wild as you invent an amazing new Pokémon! I look forward to seeing the unique creature you design based on the starting concept provided.

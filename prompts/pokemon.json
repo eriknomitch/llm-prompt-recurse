@@ -1,0 +1,9 @@
+{
+  "task": "Given a description, create a new Pokémon. The description should include details such as type, abilities, physical characteristics, personality traits, and potential moves. The output should provide a comprehensive overview of the new Pokémon, including its name, type(s), abilities, base stats, appearance, personality, moves, and evolutionary line if applicable.",
+  "input_variables": ["description"],
+  "output_variables": ["new_pokemon"],
+  "prompt": {
+    "name": "eriknomitch/metaprompt",
+    "version": "f8de889c"
+  }
+}
